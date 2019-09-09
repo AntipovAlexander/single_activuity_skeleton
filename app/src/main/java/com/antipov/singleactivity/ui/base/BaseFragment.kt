@@ -1,0 +1,57 @@
+package com.antipov.singleactivity.ui.base
+
+import android.content.Context
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.antipov.singleactivity.navigation.AppNavigator
+import com.arellomobile.mvp.MvpAppCompatFragment
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
+
+abstract class BaseFragment : MvpAppCompatFragment(), CoroutineScope, HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+
+    protected abstract val layoutRes: Int
+
+    private val compositeJob = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO + compositeJob
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(layoutRes, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initListeners()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        AndroidSupportInjection.inject(this)
+    }
+
+    override fun onDestroy() {
+        compositeJob.cancel()
+        super.onDestroy()
+    }
+
+    abstract fun getActivityNavigator(): AppNavigator
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
+
+    open fun initListeners() { /* implement if needed */
+    }
+}
