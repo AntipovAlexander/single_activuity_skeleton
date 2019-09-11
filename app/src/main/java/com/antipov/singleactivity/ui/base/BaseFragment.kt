@@ -43,8 +43,8 @@ abstract class BaseFragment : MvpAppCompatFragment(), CoroutineScope, HasSupport
     }
 
     override fun onAttach(context: Context) {
-        super.onAttach(context)
         AndroidSupportInjection.inject(this)
+        super.onAttach(context)
     }
 
     override fun onDestroy() {
@@ -67,5 +67,8 @@ abstract class BaseFragment : MvpAppCompatFragment(), CoroutineScope, HasSupport
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
 
     open fun initListeners() { /* implement if needed */
+    }
+
+    open fun onBackPressed() {/* implement if needed */
     }
 }

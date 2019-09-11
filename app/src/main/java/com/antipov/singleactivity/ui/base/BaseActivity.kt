@@ -34,6 +34,9 @@ abstract class BaseActivity : MvpAppCompatActivity(), HasSupportFragmentInjector
 
     protected abstract val layoutRes: Int
 
+    private val currentFragment: BaseFragment?
+        get() = supportFragmentManager.findFragmentById(R.id.hostContainer) as? BaseFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -41,8 +44,8 @@ abstract class BaseActivity : MvpAppCompatActivity(), HasSupportFragmentInjector
         initListeners()
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onResumeFragments() {
+        super.onResumeFragments()
         navigatorHolder.setNavigator(getActivityNavigator())
     }
 
@@ -91,6 +94,10 @@ abstract class BaseActivity : MvpAppCompatActivity(), HasSupportFragmentInjector
 
     override fun showMessage(message: String) {
         showSnackbar(message)
+    }
+
+    override fun onBackPressed() {
+        currentFragment?.onBackPressed() ?: super.onBackPressed()
     }
 
 }

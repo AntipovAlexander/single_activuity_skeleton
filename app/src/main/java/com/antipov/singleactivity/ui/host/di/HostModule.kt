@@ -8,6 +8,8 @@ import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_flow.di.FirstFlowModule
 import com.antipov.singleactivity.ui.host.HostActivity
 import com.antipov.singleactivity.ui.host.HostPresenter
+import com.antipov.singleactivity.ui.second_flow.SecondFlowFragment
+import com.antipov.singleactivity.ui.second_flow.di.SecondFlowModule
 import com.antipov.singleactivity.utils.util.HostDependency
 import dagger.Module
 import dagger.Provides
@@ -19,7 +21,11 @@ abstract class HostModule {
 
     @PerFragment
     @ContributesAndroidInjector(modules = [FirstFlowModule::class])
-    abstract fun mainFragmentInjector(): FirstFlowFragment
+    abstract fun firstFragment(): FirstFlowFragment
+
+    @PerFragment
+    @ContributesAndroidInjector(modules = [SecondFlowModule::class])
+    abstract fun secondFragment(): SecondFlowFragment
 
     @Module
     companion object {
@@ -40,6 +46,5 @@ abstract class HostModule {
         @PerActivity
         @JvmStatic
         fun provideHostDependency(hostActivity: HostActivity) = HostDependency()
-
     }
 }
