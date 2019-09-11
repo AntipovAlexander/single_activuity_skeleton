@@ -8,6 +8,7 @@ import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_flow.di.FirstFlowModule
 import com.antipov.singleactivity.ui.host.HostActivity
 import com.antipov.singleactivity.ui.host.HostPresenter
+import com.antipov.singleactivity.utils.util.HostDependency
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -32,6 +33,13 @@ abstract class HostModule {
         @PerActivity
         @JvmStatic
         @HostNavigator
-        fun provideMainActivityNavigator(hostActivity: HostActivity) = AppNavigator(hostActivity, R.id.hostContainer)
+        fun provideMainActivityNavigator(hostActivity: HostActivity) =
+            AppNavigator(hostActivity, R.id.hostContainer)
+
+        @Provides
+        @PerActivity
+        @JvmStatic
+        fun provideHostDependency(hostActivity: HostActivity) = HostDependency()
+
     }
 }

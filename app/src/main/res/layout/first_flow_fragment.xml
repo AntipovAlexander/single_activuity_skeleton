@@ -8,21 +8,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@string/app_name"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorPrimary"/>
 
     <FrameLayout
             android:id="@+id/firstFlowContainer"
             android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/openNested"/>
-
-    <Button
-            android:id="@+id/openNested"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="GO NESTED"
-            android:layout_alignParentBottom="true"/>
-
+            android:layout_height="match_parent" />
 </RelativeLayout>

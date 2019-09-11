@@ -6,10 +6,9 @@ import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.first_flow.di.FirstFlowNavigator
+import com.antipov.singleactivity.utils.util.FirstFlowDependency
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import kotlinx.android.synthetic.main.first_flow_fragment.*
-import org.jetbrains.anko.sdk27.coroutines.onClick
 import javax.inject.Inject
 
 class FirstFlowFragment : BaseFragment(), FirstFlowView {
@@ -25,17 +24,16 @@ class FirstFlowFragment : BaseFragment(), FirstFlowView {
     @field:FirstFlowNavigator
     lateinit var navigator: AppNavigator
 
+    @Inject
+    lateinit var firstFlowDependency: FirstFlowDependency
+
     override val layoutRes: Int = R.layout.first_flow_fragment
 
     override fun getActivityNavigator() = navigator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        openNested.onClick { presenter.enterNested() }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        getActivityNavigator()
+        if (savedInstanceState == null) view.post { presenter.enterNested() }
+        firstFlowDependency.value = "This value set in FirstFlow"
     }
 }
