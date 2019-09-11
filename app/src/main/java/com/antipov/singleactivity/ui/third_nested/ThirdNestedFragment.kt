@@ -5,7 +5,7 @@ import android.view.View
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
-import com.antipov.singleactivity.ui.first_flow.di.FirstFlowNavigator
+import com.antipov.singleactivity.ui.host.di.HostNavigator
 import com.antipov.singleactivity.utils.util.FirstFlowDependency
 import com.antipov.singleactivity.utils.util.HostDependency
 import com.antipov.singleactivity.utils.util.SingletonDependency
@@ -18,7 +18,7 @@ import javax.inject.Inject
 class ThirdNestedFragment : BaseFragment(), ThirdNestedView {
 
     @Inject
-    @field:FirstFlowNavigator
+    @field:HostNavigator
     lateinit var navigator: AppNavigator
 
     @Inject
@@ -49,6 +49,6 @@ class ThirdNestedFragment : BaseFragment(), ThirdNestedView {
         thirdNestedTv2.text = firstFlowDependency.value
         thirdNestedTv3.text = hostDependency.value
         thirdNestedTv4.text = singletonDependency.value
-        thirdNestedBtn.onClick { }
+        thirdNestedBtn.onClick { presenter.goNextFlow() }
     }
 }
