@@ -3,15 +3,15 @@ package com.antipov.singleactivity.ui.nested
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
+import com.antipov.singleactivity.ui.host.di.HostNavigator
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import javax.inject.Inject
-import javax.inject.Named
 
 class NestedFragment : BaseFragment(), NestedView {
 
     @Inject
-    @field:Named("host_navigator")
+    @field:HostNavigator
     lateinit var navigator: AppNavigator
 
     @Inject

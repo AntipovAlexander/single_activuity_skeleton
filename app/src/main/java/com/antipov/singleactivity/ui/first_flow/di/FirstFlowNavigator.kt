@@ -1,4 +1,4 @@
-package com.antipov.singleactivity.ui.first_flow
+package com.antipov.singleactivity.ui.first_flow.di
 
 import javax.inject.Qualifier
 

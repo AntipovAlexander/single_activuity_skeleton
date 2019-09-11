@@ -1,16 +1,17 @@
-package com.antipov.singleactivity.ui.host
+package com.antipov.singleactivity.ui.host.di
 
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.di.scopes.PerActivity
 import com.antipov.singleactivity.di.scopes.PerFragment
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
-import com.antipov.singleactivity.ui.first_flow.FirstFlowModule
+import com.antipov.singleactivity.ui.first_flow.di.FirstFlowModule
+import com.antipov.singleactivity.ui.host.HostActivity
+import com.antipov.singleactivity.ui.host.HostPresenter
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 import ru.terrakok.cicerone.Router
-import javax.inject.Named
 
 @Module
 abstract class HostModule {
@@ -24,12 +25,13 @@ abstract class HostModule {
         @Provides
         @PerActivity
         @JvmStatic
-        fun providePresenter(router: Router) = HostPresenter(router)
+        fun providePresenter(router: Router) =
+            HostPresenter(router)
 
         @Provides
         @PerActivity
         @JvmStatic
-        @Named("host_navigator")
+        @HostNavigator
         fun provideMainActivityNavigator(hostActivity: HostActivity) = AppNavigator(hostActivity, R.id.hostContainer)
     }
 }

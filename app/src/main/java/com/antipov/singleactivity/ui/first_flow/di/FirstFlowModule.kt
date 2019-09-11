@@ -1,12 +1,14 @@
-package com.antipov.singleactivity.ui.first_flow
+package com.antipov.singleactivity.ui.first_flow.di
 
 import android.support.v7.app.AppCompatActivity
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.di.scopes.PerChildFragment
 import com.antipov.singleactivity.di.scopes.PerFragment
 import com.antipov.singleactivity.navigation.AppNavigator
+import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
+import com.antipov.singleactivity.ui.first_flow.FirstFlowPresenter
 import com.antipov.singleactivity.ui.nested.NestedFragment
-import com.antipov.singleactivity.ui.nested.NestedModule
+import com.antipov.singleactivity.ui.nested.di.NestedModule
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -36,6 +38,7 @@ abstract class FirstFlowModule {
         @Provides
         @PerFragment
         @JvmStatic
-        fun providePresenter(router: Router) = FirstFlowPresenter(router)
+        fun providePresenter(router: Router) =
+            FirstFlowPresenter(router)
     }
 }

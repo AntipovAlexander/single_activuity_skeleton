@@ -1,14 +1,13 @@
 package com.antipov.singleactivity.ui.first_flow
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.View
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
+import com.antipov.singleactivity.ui.first_flow.di.FirstFlowNavigator
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import dagger.android.AndroidInjector
 import kotlinx.android.synthetic.main.first_flow_fragment.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import javax.inject.Inject

@@ -1,6 +1,7 @@
-package com.antipov.singleactivity.ui.nested
+package com.antipov.singleactivity.ui.nested.di
 
 import com.antipov.singleactivity.di.scopes.PerChildFragment
+import com.antipov.singleactivity.ui.nested.NestedPresenter
 import dagger.Module
 import dagger.Provides
 
