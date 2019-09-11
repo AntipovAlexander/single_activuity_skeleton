@@ -1,13 +1,11 @@
 package com.antipov.singleactivity.ui.host
 
-import android.app.Activity
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.di.scopes.PerActivity
 import com.antipov.singleactivity.di.scopes.PerFragment
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_flow.FirstFlowModule
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -34,8 +32,4 @@ abstract class HostModule {
         @Named("host_navigator")
         fun provideMainActivityNavigator(hostActivity: HostActivity) = AppNavigator(hostActivity, R.id.hostContainer)
     }
-
-    @Binds
-    @PerActivity
-    internal abstract fun activity(hostActivity: HostActivity): Activity
 }

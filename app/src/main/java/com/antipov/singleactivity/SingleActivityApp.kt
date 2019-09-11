@@ -9,7 +9,7 @@ import dagger.android.HasActivityInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class CoroutinesApp : Application(), HasActivityInjector {
+class SingleActivityApp : Application(), HasActivityInjector {
 
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>

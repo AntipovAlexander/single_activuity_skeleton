@@ -15,10 +15,14 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseFragment : MvpAppCompatFragment(), CoroutineScope, HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
 
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
@@ -46,6 +50,16 @@ abstract class BaseFragment : MvpAppCompatFragment(), CoroutineScope, HasSupport
     override fun onDestroy() {
         compositeJob.cancel()
         super.onDestroy()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(getActivityNavigator())
+    }
+
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 
     abstract fun getActivityNavigator(): AppNavigator

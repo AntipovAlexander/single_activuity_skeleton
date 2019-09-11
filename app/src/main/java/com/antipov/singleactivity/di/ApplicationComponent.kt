@@ -1,7 +1,7 @@
 package com.antipov.singleactivity.di
 
 import android.app.Application
-import com.antipov.singleactivity.CoroutinesApp
+import com.antipov.singleactivity.SingleActivityApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -27,5 +27,5 @@ interface ApplicationComponent {
         fun build(): ApplicationComponent
     }
 
-    fun inject(app: CoroutinesApp)
+    fun inject(app: SingleActivityApp)
 }
