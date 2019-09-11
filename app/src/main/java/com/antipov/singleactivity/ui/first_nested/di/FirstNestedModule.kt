@@ -4,6 +4,7 @@ import com.antipov.singleactivity.di.scopes.PerChildFragment
 import com.antipov.singleactivity.ui.first_nested.FirstNestedPresenter
 import dagger.Module
 import dagger.Provides
+import ru.terrakok.cicerone.Router
 
 @Module
 abstract class FirstNestedModule {
@@ -13,6 +14,6 @@ abstract class FirstNestedModule {
         @Provides
         @PerChildFragment
         @JvmStatic
-        fun providePresenter() = FirstNestedPresenter()
+        fun providePresenter(router: Router) = FirstNestedPresenter(router)
     }
 }

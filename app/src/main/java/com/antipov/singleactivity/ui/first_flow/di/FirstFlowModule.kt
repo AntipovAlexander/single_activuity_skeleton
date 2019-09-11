@@ -9,6 +9,8 @@ import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_flow.FirstFlowPresenter
 import com.antipov.singleactivity.ui.first_nested.FirstNestedFragment
 import com.antipov.singleactivity.ui.first_nested.di.FirstNestedModule
+import com.antipov.singleactivity.ui.second_nested.SecondNestedFragment
+import com.antipov.singleactivity.ui.second_nested.di.SecondNestedModule
 import com.antipov.singleactivity.utils.util.FirstFlowDependency
 import dagger.Module
 import dagger.Provides
@@ -21,6 +23,10 @@ abstract class FirstFlowModule {
     @PerChildFragment
     @ContributesAndroidInjector(modules = [FirstNestedModule::class])
     abstract fun nestedInjectorInjector(): FirstNestedFragment
+
+    @PerChildFragment
+    @ContributesAndroidInjector(modules = [SecondNestedModule::class])
+    abstract fun secondNestedInjectorInjector(): SecondNestedFragment
 
     @Module
     companion object {
