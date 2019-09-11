@@ -2,17 +2,14 @@ package com.antipov.singleactivity.ui.first_flow.di
 
 import android.support.v7.app.AppCompatActivity
 import com.antipov.singleactivity.R
-import com.antipov.singleactivity.di.scopes.PerActivity
 import com.antipov.singleactivity.di.scopes.PerChildFragment
 import com.antipov.singleactivity.di.scopes.PerFragment
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_flow.FirstFlowPresenter
-import com.antipov.singleactivity.ui.host.HostActivity
-import com.antipov.singleactivity.ui.nested.NestedFragment
-import com.antipov.singleactivity.ui.nested.di.NestedModule
+import com.antipov.singleactivity.ui.first_nested.FirstNestedFragment
+import com.antipov.singleactivity.ui.first_nested.di.FirstNestedModule
 import com.antipov.singleactivity.utils.util.FirstFlowDependency
-import com.antipov.singleactivity.utils.util.HostDependency
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -22,8 +19,8 @@ import ru.terrakok.cicerone.Router
 abstract class FirstFlowModule {
 
     @PerChildFragment
-    @ContributesAndroidInjector(modules = [NestedModule::class])
-    abstract fun nestedInjectorInjector(): NestedFragment
+    @ContributesAndroidInjector(modules = [FirstNestedModule::class])
+    abstract fun nestedInjectorInjector(): FirstNestedFragment
 
     @Module
     companion object {

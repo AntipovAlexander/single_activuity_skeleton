@@ -13,6 +13,6 @@ class FirstFlowPresenter(private val router: Router) : BasePresenter<FirstFlowVi
     }
 
     fun enterNested() {
-        router.navigateTo(Screens.Nested)
+        router.navigateTo(Screens.FirstNested)
     }
 }
