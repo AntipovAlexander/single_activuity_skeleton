@@ -37,9 +37,6 @@ class SecondNestedFragment : BaseFragment(), SecondNestedView {
     @ProvidePresenter
     fun providePresenter() = presenter
 
-    @Inject
-    lateinit var singleton: SingletonDependency
-
     override val layoutRes: Int = R.layout.second_nested_fragment
 
     override fun getActivityNavigator(): AppNavigator = navigator
@@ -49,6 +46,6 @@ class SecondNestedFragment : BaseFragment(), SecondNestedView {
         secondNestedTv2.text = firstFlowDependency.value
         secondNestedTv3.text = hostDependency.value
         secondNestedTv4.text = singletonDependency.value
-        secondNestedBtn.onClick { }
+        secondNestedBtn.onClick { presenter.goNext() }
     }
 }

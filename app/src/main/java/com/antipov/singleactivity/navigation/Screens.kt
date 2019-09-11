@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_nested.FirstNestedFragment
 import com.antipov.singleactivity.ui.second_nested.SecondNestedFragment
+import com.antipov.singleactivity.ui.third_nested.ThirdNestedFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 /**
@@ -22,6 +23,10 @@ class Screens {
 
     object SecondNested : SupportAppScreen() {
         override fun getFragment(): SecondNestedFragment = SecondNestedFragment()
+    }
+
+    object ThirdNested : SupportAppScreen() {
+        override fun getFragment(): ThirdNestedFragment = ThirdNestedFragment()
     }
 
 }
