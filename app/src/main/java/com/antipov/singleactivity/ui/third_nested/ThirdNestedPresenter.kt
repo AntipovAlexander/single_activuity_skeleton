@@ -7,7 +7,8 @@ import ru.terrakok.cicerone.Router
 
 @InjectViewState
 class ThirdNestedPresenter(private val router: Router) : BasePresenter<ThirdNestedView>() {
-    fun goNextFlow() {
-        router.navigateTo(Screens.SecondFlow)
-    }
+
+    fun goNextFlow() = router.navigateTo(Screens.SecondFlow)
+
+    fun onBackPressed() = router.exit()
 }

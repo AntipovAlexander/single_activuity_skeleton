@@ -27,6 +27,9 @@ class FirstFlowFragment : BaseFragment(), FirstFlowView {
     @Inject
     lateinit var firstFlowDependency: FirstFlowDependency
 
+    private val currentFragment: BaseFragment?
+        get() = childFragmentManager.findFragmentById(R.id.firstFlowContainer) as? BaseFragment
+
     override val layoutRes: Int = R.layout.first_flow_fragment
 
     override fun getActivityNavigator() = navigator
@@ -35,5 +38,9 @@ class FirstFlowFragment : BaseFragment(), FirstFlowView {
         super.onViewCreated(view, savedInstanceState)
         firstFlowDependency.value = "This value set in FirstFlow"
         view.post { if (childFragmentManager.backStackEntryCount == 0) presenter.enterNested() }
+    }
+
+    override fun onBackPressed() {
+        currentFragment?.onBackPressed()
     }
 }

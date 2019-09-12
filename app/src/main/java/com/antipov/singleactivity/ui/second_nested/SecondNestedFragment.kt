@@ -3,6 +3,7 @@ package com.antipov.singleactivity.ui.second_nested
 import android.os.Bundle
 import android.view.View
 import com.antipov.singleactivity.R
+import com.antipov.singleactivity.di.NestedNavigator
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.first_flow.di.FirstFlowNavigator
@@ -20,6 +21,10 @@ class SecondNestedFragment : BaseFragment(), SecondNestedView {
     @Inject
     @field:FirstFlowNavigator
     lateinit var navigator: AppNavigator
+
+    @Inject
+    @field:NestedNavigator
+    lateinit var nestedNavigator: AppNavigator
 
     @Inject
     @InjectPresenter
@@ -47,5 +52,10 @@ class SecondNestedFragment : BaseFragment(), SecondNestedView {
         secondNestedTv3.text = hostDependency.value
         secondNestedTv4.text = singletonDependency.value
         secondNestedBtn.onClick { presenter.goNext() }
+    }
+
+    override fun onBackPressed() {
+        navigatorHolder.setNavigator(nestedNavigator)
+        presenter.onBackPressed()
     }
 }

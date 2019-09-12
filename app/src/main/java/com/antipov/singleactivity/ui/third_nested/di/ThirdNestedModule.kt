@@ -1,6 +1,10 @@
 package com.antipov.singleactivity.ui.third_nested.di
 
+import android.support.v7.app.AppCompatActivity
+import com.antipov.singleactivity.di.NestedNavigator
 import com.antipov.singleactivity.di.scopes.PerChildFragment
+import com.antipov.singleactivity.navigation.AppNavigator
+import com.antipov.singleactivity.ui.third_nested.ThirdNestedFragment
 import com.antipov.singleactivity.ui.third_nested.ThirdNestedPresenter
 import dagger.Module
 import dagger.Provides
@@ -11,6 +15,18 @@ abstract class ThirdNestedModule {
 
     @Module
     companion object {
+
+        @Provides
+        @PerChildFragment
+        @JvmStatic
+        @NestedNavigator
+        fun provideFirstFlowNav(fragment: ThirdNestedFragment) =
+            AppNavigator(
+                fragment.activity as AppCompatActivity,
+                fragment.parentFragment?.childFragmentManager ?: fragment.childFragmentManager,
+                0
+            )
+
         @Provides
         @PerChildFragment
         @JvmStatic

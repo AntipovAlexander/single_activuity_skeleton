@@ -3,6 +3,7 @@ package com.antipov.singleactivity.ui.third_nested
 import android.os.Bundle
 import android.view.View
 import com.antipov.singleactivity.R
+import com.antipov.singleactivity.di.NestedNavigator
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.host.di.HostNavigator
@@ -20,6 +21,10 @@ class ThirdNestedFragment : BaseFragment(), ThirdNestedView {
     @Inject
     @field:HostNavigator
     lateinit var navigator: AppNavigator
+
+    @Inject
+    @field:NestedNavigator
+    lateinit var nestedNavigator: AppNavigator
 
     @Inject
     @InjectPresenter
@@ -50,5 +55,10 @@ class ThirdNestedFragment : BaseFragment(), ThirdNestedView {
         thirdNestedTv3.text = hostDependency.value
         thirdNestedTv4.text = singletonDependency.value
         thirdNestedBtn.onClick { presenter.goNextFlow() }
+    }
+
+    override fun onBackPressed() {
+        navigatorHolder.setNavigator(nestedNavigator)
+        presenter.onBackPressed()
     }
 }

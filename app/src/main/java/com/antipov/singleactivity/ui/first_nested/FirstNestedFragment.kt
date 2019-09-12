@@ -6,6 +6,7 @@ import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.first_flow.di.FirstFlowNavigator
+import com.antipov.singleactivity.ui.host.di.HostNavigator
 import com.antipov.singleactivity.utils.util.FirstFlowDependency
 import com.antipov.singleactivity.utils.util.HostDependency
 import com.antipov.singleactivity.utils.util.SingletonDependency
@@ -20,6 +21,10 @@ class FirstNestedFragment : BaseFragment(), FirstNestedView {
     @Inject
     @field:FirstFlowNavigator
     lateinit var navigator: AppNavigator
+
+    @Inject
+    @field:HostNavigator
+    lateinit var hostNavigator: AppNavigator
 
     @Inject
     @InjectPresenter
@@ -47,5 +52,10 @@ class FirstNestedFragment : BaseFragment(), FirstNestedView {
         firstNestedTv3.text = hostDependency.value
         firstNestedTv4.text = singletonDependency.value
         firstNestedBtn.onClick { presenter.goNext()}
+    }
+
+    override fun onBackPressed() {
+        navigatorHolder.setNavigator(hostNavigator)
+        presenter.onBackPressed()
     }
 }
