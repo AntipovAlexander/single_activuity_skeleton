@@ -7,12 +7,5 @@ import ru.terrakok.cicerone.Router
 
 @InjectViewState
 class FirstFlowPresenter(private val router: Router) : BasePresenter<FirstFlowView>() {
-
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-    }
-
-    fun enterNested() {
-        router.navigateTo(Screens.FirstNested)
-    }
+    fun enterNested() = router.navigateTo(Screens.FirstNested)
 }
