@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import ru.terrakok.cicerone.NavigatorHolder
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -44,8 +45,8 @@ abstract class BaseActivity : MvpAppCompatActivity(), HasSupportFragmentInjector
         initListeners()
     }
 
-    override fun onResumeFragments() {
-        super.onResumeFragments()
+    override fun onResume() {
+        super.onResume()
         navigatorHolder.setNavigator(getActivityNavigator())
     }
 

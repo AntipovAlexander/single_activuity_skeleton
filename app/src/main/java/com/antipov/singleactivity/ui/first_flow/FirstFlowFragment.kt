@@ -37,7 +37,11 @@ class FirstFlowFragment : BaseFragment(), FirstFlowView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         firstFlowDependency.value = "This value set in FirstFlow"
-        view.post { if (childFragmentManager.backStackEntryCount == 0) presenter.enterNested() }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        view?.post { if (childFragmentManager.findFragmentById(R.id.firstFlowContainer) == null) presenter.enterNested() }
     }
 
     override fun onBackPressed() {
