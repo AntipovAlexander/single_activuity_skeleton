@@ -13,7 +13,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         ApplicationModule::class,
         NavigationModule::class,
-        AppDependencies::class
+        AppDependencies::class,
+        GlobalRepositories::class
     ]
 )
 interface ApplicationComponent {

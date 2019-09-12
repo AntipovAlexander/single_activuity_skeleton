@@ -2,6 +2,7 @@ package com.antipov.singleactivity.ui.first_flow.di
 
 import android.support.v7.app.AppCompatActivity
 import com.antipov.singleactivity.R
+import com.antipov.singleactivity.data.repository.ReactiveRepository
 import com.antipov.singleactivity.di.scopes.PerChildFragment
 import com.antipov.singleactivity.di.scopes.PerFragment
 import com.antipov.singleactivity.navigation.AppNavigator
@@ -51,8 +52,8 @@ abstract class FirstFlowModule {
         @Provides
         @PerFragment
         @JvmStatic
-        fun providePresenter(router: Router) =
-            FirstFlowPresenter(router)
+        fun providePresenter(reactiveRepository: ReactiveRepository, router: Router) =
+            FirstFlowPresenter(reactiveRepository, router)
 
         @Provides
         @PerFragment

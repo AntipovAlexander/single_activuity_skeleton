@@ -1,10 +1,11 @@
 package com.antipov.singleactivity.ui.second_flow
 
+import android.os.Bundle
+import android.view.View
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.host.di.HostNavigator
-import com.antipov.singleactivity.ui.second_flow.di.SecondFlowNavigator
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import javax.inject.Inject
@@ -25,6 +26,11 @@ class SecondFlowFragment : BaseFragment(), SecondFlowView {
     override val layoutRes: Int = R.layout.second_flow_fragment
 
     override fun getActivityNavigator() = navigator
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.onViewCreated()
+    }
 
     override fun onBackPressed() {
         super.onBackPressed()

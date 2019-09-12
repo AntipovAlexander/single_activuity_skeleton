@@ -37,6 +37,7 @@ class FirstFlowFragment : BaseFragment(), FirstFlowView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         firstFlowDependency.value = "This value set in FirstFlow"
+        presenter.onViewCreated()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

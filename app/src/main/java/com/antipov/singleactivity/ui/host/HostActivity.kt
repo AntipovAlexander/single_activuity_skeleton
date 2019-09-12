@@ -8,6 +8,7 @@ import com.antipov.singleactivity.ui.host.di.HostNavigator
 import com.antipov.singleactivity.utils.util.HostDependency
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import kotlinx.android.synthetic.main.activity_host.*
 import javax.inject.Inject
 
 class HostActivity : BaseActivity(), HostView {
@@ -33,5 +34,9 @@ class HostActivity : BaseActivity(), HostView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         hostDependency.value = "This value set in host activity"
+    }
+
+    override fun updateCaption(caption: String) {
+        hostCaption.text = caption
     }
 }

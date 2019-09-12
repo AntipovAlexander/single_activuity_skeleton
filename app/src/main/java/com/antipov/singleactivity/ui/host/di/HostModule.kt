@@ -1,6 +1,7 @@
 package com.antipov.singleactivity.ui.host.di
 
 import com.antipov.singleactivity.R
+import com.antipov.singleactivity.data.repository.ReactiveRepository
 import com.antipov.singleactivity.di.scopes.PerActivity
 import com.antipov.singleactivity.di.scopes.PerFragment
 import com.antipov.singleactivity.navigation.AppNavigator
@@ -32,8 +33,8 @@ abstract class HostModule {
         @Provides
         @PerActivity
         @JvmStatic
-        fun providePresenter(router: Router) =
-            HostPresenter(router)
+        fun providePresenter(reactiveRepository: ReactiveRepository, router: Router) =
+            HostPresenter(reactiveRepository, router)
 
         @Provides
         @PerActivity
@@ -45,6 +46,6 @@ abstract class HostModule {
         @Provides
         @PerActivity
         @JvmStatic
-        fun provideHostDependency(hostActivity: HostActivity) = HostDependency()
+        fun provideHostDependency() = HostDependency()
     }
 }
