@@ -3,8 +3,8 @@ package com.antipov.singleactivity.ui.first_flow
 import com.antipov.singleactivity.data.repository.ReactiveRepository
 import com.antipov.singleactivity.navigation.Screens
 import com.antipov.singleactivity.ui.base.BasePresenter
-import com.arellomobile.mvp.InjectViewState
 import kotlinx.coroutines.launch
+import moxy.InjectViewState
 import ru.terrakok.cicerone.Router
 
 @InjectViewState

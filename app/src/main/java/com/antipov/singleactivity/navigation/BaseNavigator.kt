@@ -1,10 +1,10 @@
 package com.antipov.singleactivity.navigation
 
-import android.support.annotation.IdRes
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.IdRes
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.appcompat.app.AppCompatActivity
 import com.antipov.singleactivity.R
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
@@ -18,14 +18,14 @@ abstract class BaseNavigator : SupportAppNavigator {
 
     constructor(
         activity: AppCompatActivity,
-        childFragmentManager: FragmentManager, @IdRes layout: Int
+        childFragmentManager: androidx.fragment.app.FragmentManager, @IdRes layout: Int
     ) : super(activity, childFragmentManager, layout)
 
     override fun setupFragmentTransaction(
         command: Command?,
-        currentFragment: Fragment?,
-        nextFragment: Fragment?,
-        fragmentTransaction: FragmentTransaction
+        currentFragment: androidx.fragment.app.Fragment?,
+        nextFragment: androidx.fragment.app.Fragment?,
+        fragmentTransaction: androidx.fragment.app.FragmentTransaction
     ) {
         fragmentTransaction.setCustomAnimations(
             R.anim.slide_from_right,

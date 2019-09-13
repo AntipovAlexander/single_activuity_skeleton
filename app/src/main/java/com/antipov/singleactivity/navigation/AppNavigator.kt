@@ -1,8 +1,8 @@
 package com.antipov.singleactivity.navigation
 
-import android.support.annotation.IdRes
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.IdRes
+import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Put here your new implementation of AppNavigator, if it needed
@@ -14,7 +14,7 @@ class AppNavigator : BaseNavigator {
         layout
     )
 
-    constructor(activity: AppCompatActivity, childFragmentManager: FragmentManager, @IdRes layout: Int) : super(
+    constructor(activity: AppCompatActivity, childFragmentManager: androidx.fragment.app.FragmentManager, @IdRes layout: Int) : super(
         activity,
         childFragmentManager,
         layout

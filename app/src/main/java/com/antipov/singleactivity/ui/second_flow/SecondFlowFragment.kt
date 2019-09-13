@@ -6,8 +6,9 @@ import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.host.di.HostNavigator
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
+
 import javax.inject.Inject
 
 class SecondFlowFragment : BaseFragment(), SecondFlowView {

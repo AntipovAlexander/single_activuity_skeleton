@@ -7,8 +7,8 @@ import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseFragment
 import com.antipov.singleactivity.ui.first_flow.di.FirstFlowNavigator
 import com.antipov.singleactivity.utils.util.FirstFlowDependency
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 class FirstFlowFragment : BaseFragment(), FirstFlowView {

@@ -1,6 +1,6 @@
 package com.antipov.singleactivity.navigation
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.antipov.singleactivity.ui.first_flow.FirstFlowFragment
 import com.antipov.singleactivity.ui.first_nested.FirstNestedFragment
 import com.antipov.singleactivity.ui.second_flow.SecondFlowFragment
@@ -15,11 +15,11 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 class Screens {
 
     object FirstFlow : SupportAppScreen() {
-        override fun getFragment(): Fragment = FirstFlowFragment()
+        override fun getFragment(): androidx.fragment.app.Fragment = FirstFlowFragment()
     }
 
     object SecondFlow : SupportAppScreen() {
-        override fun getFragment(): Fragment = SecondFlowFragment()
+        override fun getFragment(): androidx.fragment.app.Fragment = SecondFlowFragment()
     }
 
     object FirstNested : SupportAppScreen() {

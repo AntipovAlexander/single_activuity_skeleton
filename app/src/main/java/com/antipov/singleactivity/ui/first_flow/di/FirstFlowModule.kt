@@ -1,6 +1,6 @@
 package com.antipov.singleactivity.ui.first_flow.di
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.data.repository.ReactiveRepository
 import com.antipov.singleactivity.di.scopes.PerChildFragment

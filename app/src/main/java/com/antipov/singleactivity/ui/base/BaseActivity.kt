@@ -2,11 +2,10 @@ package com.antipov.singleactivity.ui.base
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.utils.extensions.showSnackbar
-import com.arellomobile.mvp.MvpAppCompatActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -14,8 +13,8 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import moxy.MvpAppCompatActivity
 import ru.terrakok.cicerone.NavigatorHolder
-import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -86,7 +85,8 @@ abstract class BaseActivity : MvpAppCompatActivity(), HasSupportFragmentInjector
         overridePendingTransitionEnter()
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> =
+        fragmentDispatchingAndroidInjector
 
     abstract fun getActivityNavigator(): AppNavigator
 

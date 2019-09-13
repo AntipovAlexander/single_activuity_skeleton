@@ -2,7 +2,7 @@ package com.antipov.singleactivity.ui.second_nested
 
 import com.antipov.singleactivity.navigation.Screens
 import com.antipov.singleactivity.ui.base.BasePresenter
-import com.arellomobile.mvp.InjectViewState
+import moxy.InjectViewState
 import ru.terrakok.cicerone.Router
 
 @InjectViewState

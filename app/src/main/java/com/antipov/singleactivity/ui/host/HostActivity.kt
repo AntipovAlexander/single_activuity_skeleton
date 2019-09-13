@@ -6,8 +6,8 @@ import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.base.BaseActivity
 import com.antipov.singleactivity.ui.host.di.HostNavigator
 import com.antipov.singleactivity.utils.util.HostDependency
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_host.*
 import javax.inject.Inject
 

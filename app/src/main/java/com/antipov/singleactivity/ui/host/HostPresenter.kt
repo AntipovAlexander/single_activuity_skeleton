@@ -3,7 +3,7 @@ package com.antipov.singleactivity.ui.host
 import com.antipov.singleactivity.data.repository.ReactiveRepository
 import com.antipov.singleactivity.navigation.Screens
 import com.antipov.singleactivity.ui.base.BasePresenter
-import com.arellomobile.mvp.InjectViewState
+import moxy.InjectViewState
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch

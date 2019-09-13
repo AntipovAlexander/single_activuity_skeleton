@@ -10,9 +10,9 @@ import com.antipov.singleactivity.ui.host.di.HostNavigator
 import com.antipov.singleactivity.utils.util.FirstFlowDependency
 import com.antipov.singleactivity.utils.util.HostDependency
 import com.antipov.singleactivity.utils.util.SingletonDependency
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.third_nested_fragment.*
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import javax.inject.Inject
 

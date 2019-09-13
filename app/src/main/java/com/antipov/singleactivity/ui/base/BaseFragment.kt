@@ -2,12 +2,11 @@ package com.antipov.singleactivity.ui.base
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.antipov.singleactivity.navigation.AppNavigator
-import com.arellomobile.mvp.MvpAppCompatFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
@@ -15,8 +14,8 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import moxy.MvpAppCompatFragment
 import ru.terrakok.cicerone.NavigatorHolder
-import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -65,7 +64,8 @@ abstract class BaseFragment : MvpAppCompatFragment(), CoroutineScope, HasSupport
 
     abstract fun getActivityNavigator(): AppNavigator
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> =
+        fragmentDispatchingAndroidInjector
 
     open fun initListeners() { /* implement if needed */
     }

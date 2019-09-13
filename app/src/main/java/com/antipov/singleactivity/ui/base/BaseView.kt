@@ -1,8 +1,11 @@
 package com.antipov.singleactivity.ui.base
 
-import android.support.annotation.StringRes
-import com.arellomobile.mvp.MvpView
+import androidx.annotation.StringRes
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
+@StateStrategyType(AddToEndStrategy::class)
 interface BaseView : MvpView {
     fun showProgress() { /* implement if needed */
     }

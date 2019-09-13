@@ -1,19 +1,18 @@
 package com.antipov.singleactivity.utils.extensions
 
 import android.app.Activity
-import android.arch.lifecycle.Lifecycle
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import com.antipov.singleactivity.R
+import com.google.android.material.snackbar.Snackbar
 import org.jetbrains.anko.*
 
 fun Context.hideKeyboard(view: View?) {
@@ -25,13 +24,6 @@ fun Context.showKeyboard(editText: EditText?) {
     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
 }
-
-fun Context.isNetworkAvailable(): Boolean {
-    val info = connectivityManager.activeNetworkInfo
-    return info != null && info.isConnected && !info.isRoaming
-}
-
-fun Fragment.isNetworkAvailable(): Boolean = activity?.isNetworkAvailable() ?: false
 
 fun Context.dialCall(number: String): Boolean {
     return try {
@@ -58,16 +50,16 @@ fun Activity.showSnackbar(
 ): Snackbar =
     showStringSnackBar(this, parent, message, length)
 
-fun Fragment.showSnackbar(
+fun androidx.fragment.app.Fragment.showSnackbar(
     message: Int,
-    length: Int = Snackbar.LENGTH_LONG,
+    length: Int = com.google.android.material.snackbar.Snackbar.LENGTH_LONG,
     view: View = activity!!.find(android.R.id.content)
 ): Snackbar =
     activity!!.showSnackbar(message, length, view)
 
-fun Fragment.showSnackbar(
+fun androidx.fragment.app.Fragment.showSnackbar(
     message: String,
-    length: Int = Snackbar.LENGTH_LONG,
+    length: Int = com.google.android.material.snackbar.Snackbar.LENGTH_LONG,
     view: View = activity!!.find(android.R.id.content)
 ): Snackbar =
     activity!!.showSnackbar(message, length, view)
@@ -76,7 +68,7 @@ private fun showStringSnackBar(context: Context, parent: View, message: String, 
     val color = ContextCompat.getColor(context, android.R.color.white)
     val snackbar = Snackbar.make(parent, message, length)
     snackbar.view.setBackgroundColor(Color.RED)
-    val textView = snackbar.view.find<TextView>(android.support.design.R.id.snackbar_text)
+    val textView = snackbar.view.find<TextView>(R.id.snackbar_text)
     textView.setTextColor(color)
     snackbar.show()
 
@@ -87,7 +79,7 @@ private fun showIntSnackBar(context: Context, parent: View, message: Int, length
     val color = ContextCompat.getColor(context, android.R.color.white)
     val snackbar = Snackbar.make(parent, message, length)
     snackbar.view.setBackgroundColor(Color.RED)
-    val textView = snackbar.view.find<TextView>(android.support.design.R.id.snackbar_text)
+    val textView = snackbar.view.find<TextView>(R.id.snackbar_text)
     textView.setTextColor(color)
     snackbar.show()
 
@@ -129,13 +121,13 @@ fun Context.openMap(lat: Float? = null, long: Float? = null, title: String? = nu
     startActivity(mapIntent)
 }
 
-inline fun FragmentActivity.isAtLeastCreated(action: () -> Unit) {
+inline fun androidx.fragment.app.FragmentActivity.isAtLeastCreated(action: () -> Unit) {
     if (lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) {
         action()
     }
 }
 
-inline fun FragmentActivity.isAtLeastStart(action: () -> Unit) {
+inline fun androidx.fragment.app.FragmentActivity.isAtLeastStart(action: () -> Unit) {
     if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
         action()
     }
