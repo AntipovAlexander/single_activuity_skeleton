@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.antipov.singleactivity.R
 import com.antipov.singleactivity.data.repository.ReactiveRepository
 import com.antipov.singleactivity.di.scopes.PerFragment
+import com.antipov.singleactivity.domain.GetData
 import com.antipov.singleactivity.navigation.AppNavigator
 import com.antipov.singleactivity.ui.second_flow.SecondFlowFragment
 import com.antipov.singleactivity.ui.second_flow.SecondFlowPresenter
@@ -32,8 +33,14 @@ abstract class SecondFlowModule {
         @Provides
         @PerFragment
         @JvmStatic
-        fun providePresenter(reactiveRepository: ReactiveRepository, router: Router) =
-            SecondFlowPresenter(reactiveRepository, router)
+        fun providePresenter(getDataUseCase: GetData, reactiveRepository: ReactiveRepository, router: Router) =
+            SecondFlowPresenter(getDataUseCase, reactiveRepository, router)
+
+
+        @Provides
+        @PerFragment
+        @JvmStatic
+        fun getDataUseCase() = GetData()
 
         @Provides
         @PerFragment
